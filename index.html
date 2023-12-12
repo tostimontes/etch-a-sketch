@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>Etch-a-sketch</title>
+  </head>
+  <body>
+    <h1>Etch-a-sketch</h1>
+    <div class="controls_box">
+      <div class="control_buttons" id="size_selector">
+        Grid Size <input id="grid_size" type="text" /><button
+          id="grid_size_confirm"
+        >
+          OK
+        </button>
+      </div>
+      <div class="control_buttons" id="hover_active_toggle">
+        Mouse mode<input
+          class="toggle_btn"
+          type="checkbox"
+          id="toggle_mouse_mode"
+        />
+        <label for="toggle_mouse_mode"></label>
+      </div>
+      <div class="control_buttons" id="rainbow_progressive_darkening_toggle">
+        Rainbow/Progressive<input
+          type="radio"
+          name="color_modes"
+          id="normal_color_mode"
+          checked
+        />
+        <label for="normal_color_mode">Normal</label>
+        <input type="radio" name="color_modes" id="darkening_color_mode" />
+        <label for="darkening_color_mode">Progressive Darkening</label>
+        <input type="radio" name="color_modes" id="rainbow_color_mode" />
+        <label for="rainbow_color_mode">Rainbow</label>
+      </div>
+      <div class="control_buttons" id="color_selection">Color</div>
+    </div>
+    <div class="container"></div>
+    <div id="erasers">
+      <button id="undo">Undo</button><button id="reset">Reset</button>
+    </div>
+  </body>
+</html>
+OK

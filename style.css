@@ -1,0 +1,116 @@
+:root {
+    font-size: 62.5%;
+}
+
+html {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-size: 1.6rem;
+    position: absolute;
+    margin: 0;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    padding: 10rem 40rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 5rem;
+    width: 50rem;
+    text-align: center;
+}
+
+.controls_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    font-size: 2.5rem;
+
+}
+
+.control_buttons {
+
+}
+
+/* Hide the default checkbox */
+input[type="checkbox"] {
+  display: none;
+}
+
+/* Style the toggle button */
+label {
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  background-color: grey;
+  border-radius: 17px;
+  position: relative;
+}
+
+label::after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.2s;
+}
+
+input[type="checkbox"]:checked + label::after {
+  transform: translateX(26px);
+}
+
+/* Hide the radio buttons */
+input[type="radio"] {
+  display: none;
+}
+
+/* Style the toggle buttons */
+label {
+  display: inline-block;
+  width: 80px;
+  height: 34px;
+  background-color: grey;
+  border-radius: 17px;
+  position: relative;
+  margin-right: 10px;
+  text-align: center;
+  line-height: 34px;
+  cursor: pointer;
+  color: white;
+}
+
+input[type="radio"]:checked + label {
+  background-color: blue;
+}
+
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    width: 700px;
+    height: 700px;
+    border: 15px solid black;
+    margin: 2rem;
+}
+
+#erasers {
+    display: flex;
+    flex-direction: row;
+}
