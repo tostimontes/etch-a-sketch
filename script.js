@@ -1,26 +1,26 @@
 //  AELs grid size:
 // keypress enter OK button and input --> Change grid size
-    //  input number --> create n rows + n columns
+//  input number --> create n rows + n columns
 // Required integer between 10-100, placeholder message, no alert
-const div = document.createElement("div");
+// const div = document.createElement("div");
 const gridButton = document.querySelector("#grid_size_confirm");
 const container = document.querySelector(".container");
 
-function rows (number) {
-    return div * 10;
+
+function setGrid(number) {
+  const div = document.createElement("div");
+  const row = div;
+  div.classList.add("tile");
+
+  for (let index = 0; index < number; index++) {
+    row.insertAdjacentHTML("afterbegin", div.outerHTML);
+  }
+  container.insertAdjacentHTML("afterbegin", row.outerHTML);
 }
 
-function columns (number) {
-
-}
-
-function setGrid (number) {
-    rows(number);
-    columns(number);
-    container.insertAdjacentElement(div)
-}
-
-gridButton.addEventListener("click", function() { setGrid(parseInt(document.querySelector("#grid_size").value)); });
+gridButton.addEventListener("click", function () {
+  setGrid(parseInt(document.querySelector("#grid_size").value));
+});
 
 //  AELs hover/active toggle
 // on toggle, change cursor behavior
