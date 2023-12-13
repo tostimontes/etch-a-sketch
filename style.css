@@ -98,3 +98,7 @@ input[type="checkbox"]:checked + label::after {
 .tile {
   box-sizing: border-box;
 }
+
+/* .tile:hover {
+  background-color: black;
+} */

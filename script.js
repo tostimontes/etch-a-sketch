@@ -8,11 +8,11 @@ const container = document.querySelector(".container");
 
 function setGrid(number) {
   const container = document.querySelector(".container");
-  container.innerHTML = '';
+  container.innerHTML = "";
   for (let index = 0; index < number; index++) {
     const row = document.createElement("div");
     row.classList.add("row");
-    row.setAttribute("style", `width: 100%; height: calc(100%/${number});`)
+    row.setAttribute("style", `width: 100%; height: calc(100%/${number});`);
     for (let index = 0; index < number; index++) {
       const tile = document.createElement("div");
       tile.classList.add("tile");
@@ -24,21 +24,32 @@ function setGrid(number) {
     }
     container.appendChild(row);
   }
+  const tiles = document.querySelectorAll(".tile");
+  tiles.forEach(tile => {
+    tile.addEventListener("mouseover", setHover)
+  });
+}
+
+function setHover(event) {
+  const tile = event.target.style;
+  tile.backgroundColor = "black";
 }
 
 gridButton.addEventListener("click", function () {
   setGrid(parseInt(document.querySelector("#grid_size").value));
 });
-gridButton.addEventListener("keyup", function(event) {
+gridButton.addEventListener("keyup", function (event) {
   if (event.key === "Enter") {
     setGrid(parseInt(document.querySelector("#grid_size").value));
   }
 });
-document.querySelector("#grid_size").addEventListener("keyup", function(event) {
-  if (event.key === "Enter") {
-    setGrid(parseInt(document.querySelector("#grid_size").value));
-  }
-});
+document
+  .querySelector("#grid_size")
+  .addEventListener("keyup", function (event) {
+    if (event.key === "Enter") {
+      setGrid(parseInt(document.querySelector("#grid_size").value));
+    }
+  });
 
 //  AELs hover/active toggle
 // on toggle, change cursor behavior
