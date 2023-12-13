@@ -20,38 +20,7 @@ function setGrid(number) {
     container.appendChild(row);
     updateUI();
   }
-  // const tiles = document.querySelectorAll(".tile");
-  // // add conditionals to set different events depending on how toggles are set beforehand
-  // // so that setHover is default, but if Active is set, it should setActive function
-  // // anyway, it should be possible to toggle after the setGRid has been called
-  // tiles.forEach(tile => {
-  //   tile.addEventListener("mouseover", setHover)
-  // });
 }
-
-// Hover/Active toggle
-// let hover = true;
-// const mouseModeToggle = document.querySelector("#hover_active_label");
-// mouseModeToggle.addEventListener("click", () => {
-//   hover = !hover;
-//   console.log(hover)
-// });
-
-// if (hover) {
-//   document.querySelector("#hover_span").style.fontWeight = "bold";
-//   document.querySelector("#active_span").style.fontWeight = "normal";
-//   const tiles = document.querySelectorAll(".tile");
-//   tiles.forEach((tile) => {
-//     tile.addEventListener("mouseover", setHover);
-//   });
-// } else {
-//   document.querySelector("#active_span").style.fontWeight = "bold";
-//   document.querySelector("#hover_span").style.fontWeight = "normal";
-//   const tiles = document.querySelectorAll(".tile");
-//   tiles.forEach((tile) => {
-//     tile.addEventListener("mousemove", setActive);
-//   });
-// }
 
 let hover = true; // Initial state of the hover variable
 
@@ -137,16 +106,33 @@ document
     }
   });
 
-// add event listeners for toggles, only enabled once grid is set
 
-//  AELs hover/active toggle
-// on toggle, change cursor behavior
+  // TODO: leave undo button for the very last
+  // to learn about stack history and so on 
 
-//  AELs color mode
-// each click changes color mode:
-//  Default: single color
-//  Rainbow: Random 7 colors
-//  Prog: 10 colors from blackest to thin grey
+// const undo = document.querySelector("#undo");
 
-//  AELs for grid divs
-// each div has ELs for hover/active, design hover first, then add toggle for active
+// undo.addEventListener("click", undoLastAction);
+
+
+// // TODO: add title and property instead of passing titleBG paramenter, as it changes to "", not tile.style.BG
+// function recordChange(tileBG, value) {
+//   const previousValue = tileBG;
+//   historyStack.push(() => {
+//     tileBG = previousValue;
+//   });
+//   tileBG = value;
+// }
+
+// function undoLastAction() {
+//   if (historyStack.length > 0) {
+//     historyStack.pop();
+//   }
+// }
+
+const eraser = document.querySelector(#eraser);
+
+const reset = document.querySelector("#reset");
+
+// reset.addEventListener("click", resetGrid);
+
