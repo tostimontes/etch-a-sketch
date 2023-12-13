@@ -67,7 +67,9 @@ updateUI();
 
 function setHover(event) {
   const tile = event.target.style;
-  tile.backgroundColor = "black";
+  // TODO: instead of black, reference the color in the color selection with a variable (if default mode)
+  // TODO: for rainbow mode, tile.backgroundColor should redirect to another function, same with progressive
+  tile.backgroundColor = brushColor;
 }
 
 let isMouseDown = false;
@@ -81,13 +83,30 @@ document.addEventListener("mouseup", () => {
 function setActive(event) {
   const tile = event.target.style;
   if (isMouseDown) {
-    tile.backgroundColor = "black";
+    tile.backgroundColor = brushColor;
   }
 }
 
 function setClick(event) {
   const tile = event.target.style
-  tile.backgroundColor = "black";
+  tile.backgroundColor = brushColor;
+}
+
+// Color mode
+
+const colorModeButton = document.querySelector("#rainbow_toggle");
+colorModeButton.addEventListener("click", changeColorMode);
+let brushColor = "black";
+
+// TODO: puth brushColor and conditional in updateUI()
+if (hover) {
+  brushColor = "red";
+} else {
+  brushColor = "blue";
+}
+
+function changeColorMode() {
+
 }
 
 gridButton.addEventListener("click", function () {
@@ -130,7 +149,7 @@ document
 //   }
 // }
 
-const eraser = document.querySelector(#eraser);
+const eraser = document.querySelector("#eraser");
 
 const reset = document.querySelector("#reset");
 
