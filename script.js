@@ -10,9 +10,14 @@ function setGrid(number) {
   for (let index = 0; index < number; index++) {
     const row = document.createElement("div"); // Create a new row
     row.classList.add("row"); // Optional: add a "row" class for styling
+    row.setAttribute("style", `width: 100%; height: calc(100%/${number});`)
     for (let index = 0; index < number; index++) {
       const tile = document.createElement("div"); // Create a new tile for each iteration
       tile.classList.add("tile");
+      tile.setAttribute(
+        "style",
+        `width: calc(100% / ${number}); height: 100%;`
+      );
       row.appendChild(tile); // Add the tile to the row
     }
     container.appendChild(row); // Add the complete row to the container
