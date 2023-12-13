@@ -6,16 +6,17 @@
 const gridButton = document.querySelector("#grid_size_confirm");
 const container = document.querySelector(".container");
 
-
 function setGrid(number) {
-  const div = document.createElement("div");
-  const row = div;
-  div.classList.add("tile");
-
   for (let index = 0; index < number; index++) {
-    row.insertAdjacentHTML("afterbegin", div.outerHTML);
+    const row = document.createElement("div"); // Create a new row
+    row.classList.add("row"); // Optional: add a "row" class for styling
+    for (let index = 0; index < number; index++) {
+      const tile = document.createElement("div"); // Create a new tile for each iteration
+      tile.classList.add("tile");
+      row.appendChild(tile); // Add the tile to the row
+    }
+    container.appendChild(row); // Add the complete row to the container
   }
-  container.insertAdjacentHTML("afterbegin", row.outerHTML);
 }
 
 gridButton.addEventListener("click", function () {
