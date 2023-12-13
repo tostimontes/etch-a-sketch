@@ -7,25 +7,37 @@ const gridButton = document.querySelector("#grid_size_confirm");
 const container = document.querySelector(".container");
 
 function setGrid(number) {
+  const container = document.querySelector(".container");
+  container.innerHTML = '';
   for (let index = 0; index < number; index++) {
-    const row = document.createElement("div"); // Create a new row
-    row.classList.add("row"); // Optional: add a "row" class for styling
+    const row = document.createElement("div");
+    row.classList.add("row");
     row.setAttribute("style", `width: 100%; height: calc(100%/${number});`)
     for (let index = 0; index < number; index++) {
-      const tile = document.createElement("div"); // Create a new tile for each iteration
+      const tile = document.createElement("div");
       tile.classList.add("tile");
       tile.setAttribute(
         "style",
         `width: calc(100% / ${number}); height: 100%;`
       );
-      row.appendChild(tile); // Add the tile to the row
+      row.appendChild(tile);
     }
-    container.appendChild(row); // Add the complete row to the container
+    container.appendChild(row);
   }
 }
 
 gridButton.addEventListener("click", function () {
   setGrid(parseInt(document.querySelector("#grid_size").value));
+});
+gridButton.addEventListener("keyup", function(event) {
+  if (event.key === "Enter") {
+    setGrid(parseInt(document.querySelector("#grid_size").value));
+  }
+});
+document.querySelector("#grid_size").addEventListener("keyup", function(event) {
+  if (event.key === "Enter") {
+    setGrid(parseInt(document.querySelector("#grid_size").value));
+  }
 });
 
 //  AELs hover/active toggle
