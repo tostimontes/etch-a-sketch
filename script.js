@@ -3,8 +3,61 @@ const container = document.querySelector(".container");
 let brushColor = "black";
 document.querySelector("#colorDropdown").style.backgroundColor = brushColor;
 let hover = true;
+const rainbowColors = [
+  "red",
+  "orange",
+  "yellow",
+  "green",
+  "blue",
+  "indigo",
+  "violet",
+];
 
+function switchBrushMode() {
+  const colorMode = document.querySelector("#rainbow_toggle").value;
+  if (colorMode === "Default") {
+    brushColor = document.querySelector("#colorDropdown").style.backgroundColor;
+  } else if (colorMode === "Rainbow") {
+    brushColor = rainbowColors[0];
+    setRainbowListeners();
+  } else {
+  }
+}
 
+function setRainbowListeners() {
+  const tiles = document.querySelectorAll(".tile");
+  if (hover) {
+    tiles.forEach((tile) => {
+      tile.addEventListener("mouseover", () => {
+        switch (brushColor) {
+          case rainbowColors[0]:
+            brushColor = rainbowColors[1];
+            break;
+          case rainbowColors[1]:
+            brushColor = rainbowColors[2];
+            break;
+          case rainbowColors[2]:
+            brushColor = rainbowColors[3];
+            break;
+          case rainbowColors[3]:
+            brushColor = rainbowColors[4];
+            break;
+          case rainbowColors[4]:
+            brushColor = rainbowColors[5];
+            break;
+          case rainbowColors[5]:
+            brushColor = rainbowColors[6];
+            break;
+          case rainbowColors[6]:
+            brushColor = rainbowColors[0];
+            break;
+        }
+      });
+    });
+  }
+  // add event listener to tiles so that click/mouseover when mousedown changes bgcolo
+  // to brushcolor and then changes to next
+}
 function setGrid(number) {
   const container = document.querySelector(".container");
   container.innerHTML = "";
@@ -44,7 +97,7 @@ function updateUI() {
   if (colorModeButton === "Default") {
     brushColor = document.querySelector("#colorDropdown").style.backgroundColor;
   } else if (colorModeButton === "Rainbow") {
-    brushColor = rainbowBrush();
+    brushColor = switchBrushMode();
   } else {
     brushColor = progressiveBrush();
   }
@@ -89,7 +142,6 @@ updateUI();
 
 function setHover(event) {
   const tile = event.target.style;
-  // TODO: instead of black, reference the color in the color selection with a variable (if default mode)
   // TODO: for rainbow mode, tile.backgroundColor should redirect to another function, same with progressive
   tile.backgroundColor = brushColor;
 }
@@ -120,23 +172,36 @@ const colorModeButton = document.querySelector("#rainbow_toggle");
 colorModeButton.addEventListener("click", changeColorMode);
 
 function changeColorMode() {
-  const colorModeButton = document.querySelector("#rainbow_toggle").value;
-  if (colorModeButton === "Default") {
-    document.querySelector("#rainbow_toggle").value = "Rainbow";
-    document.querySelector("#rainbow_toggle").textContent = "Rainbow";
-    document.querySelector("#rainbow_toggle").style = "background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet); color: black;"
+  const colorModeButton = document.querySelector("#rainbow_toggle");
+  if (colorModeButton.value === "Default") {
+    colorModeButton.value = "Rainbow";
+    colorModeButton.textContent = "Rainbow";
+    colorModeButton.style =
+      "background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet); color: black;";
     updateUI();
-  } else if (colorModeButton === "Rainbow") {
-    document.querySelector("#rainbow_toggle").value = "Progressive";
-    document.querySelector("#rainbow_toggle").textContent = "Progressive";
-    document.querySelector("#rainbow_toggle").style = "background: linear-gradient(to right, white, black); color: red;";
+  } else if (colorModeButton.value === "Rainbow") {
+    colorModeButton.value = "Progressive";
+    colorModeButton.textContent = "Progressive";
+    colorModeButton.style =
+      "background: linear-gradient(to right, white, black); color: red;";
     updateUI();
   } else {
-    document.querySelector("#rainbow_toggle").value = "Default";
-    document.querySelector("#rainbow_toggle").textContent = "Default";
-    document.querySelector("#rainbow_toggle").style = "background: black; color: white;";
+    colorModeButton.value = "Default";
+    colorModeButton.textContent = "Default";
+    colorModeButton.style = "background: black; color: white;";
     updateUI();
   }
+}
+
+function rainbowBrush() {
+  brushColor = "red";
+
+  // when any of the paint actions are fired
+  //  brushColor iterates to next color (except black)
+}
+
+function progressiveBrush() {
+  // listeners only add 10% of brushColor at each trigger
 }
 
 gridButton.addEventListener("click", function () {
@@ -145,7 +210,7 @@ gridButton.addEventListener("click", function () {
 gridButton.addEventListener("keyup", function (event) {
   if (event.key === "Enter") {
     setGrid(parseInt(document.querySelector("#grid_size").value));
-  } 
+  }
 });
 document
   .querySelector("#grid_size")
