@@ -1,5 +1,7 @@
 const gridButton = document.querySelector("#grid_size_confirm");
 const container = document.querySelector(".container");
+let brushColor = "black";
+
 
 function setGrid(number) {
   const container = document.querySelector(".container");
@@ -24,8 +26,28 @@ function setGrid(number) {
 
 let hover = true; // Initial state of the hover variable
 
+// Brush color
+
+const brushSelector = document.querySelector("#colorDropdown");
+brushSelector.addEventListener("change", function(event) {
+  setBrushColor(event.target.value);
+});
+
+function setBrushColor(color) {
+  document.querySelector("#colorDropdown").style.backgroundColor = color;
+  brushColor = color;
+}
+
 // Function to update styles and event listeners based on the hover state
 function updateUI() {
+  const colorModeButton = document.querySelector("#rainbow_toggle").value;
+  // if (colorModeButton === "Default") {
+  //   brushColor = document.querySelector("#colorDropdown").style.backgroundColor;
+  // } else if (colorModeButton === "Rainbow") {
+  //   brushColor = rainbowBrush();
+  // } else {
+  //   brushColor = progressiveBrush();
+  // }
   if (hover) {
     document.querySelector("#hover_span").style.fontWeight = "bold";
     document.querySelector("#active_span").style.fontWeight = "normal";
@@ -96,7 +118,6 @@ function setClick(event) {
 
 const colorModeButton = document.querySelector("#rainbow_toggle");
 colorModeButton.addEventListener("click", changeColorMode);
-let brushColor = "black";
 
 // TODO: puth brushColor and conditional in updateUI()
 if (hover) {
@@ -106,7 +127,18 @@ if (hover) {
 }
 
 function changeColorMode() {
-
+  const colorModeButton = document.querySelector("#rainbow_toggle").value;
+  if (colorModeButton === "Default") {
+    document.querySelector("#rainbow_toggle").value = "Rainbow";
+    updateUI(); 
+  } else if (colorModeButton === "Rainbow") {
+    document.querySelector("#rainbow_toggle").value = "Progressive";
+    updateUI();
+  } else {
+    document.querySelector("#rainbow_toggle").value = "Default";
+    updateUI();
+  }
+  
 }
 
 gridButton.addEventListener("click", function () {

@@ -99,3 +99,11 @@ input[type="checkbox"]:checked + label::after {
   box-sizing: border-box;
 }
 
+#colorDropdown {
+  font-size: 2rem;
+  background-color: black;
+  color: white;
+  width: 3rem;
+  height: 3rem;
+  appearance: none;
+}
