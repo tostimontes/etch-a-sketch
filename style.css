@@ -99,6 +99,12 @@ input[type="checkbox"]:checked + label::after {
   box-sizing: border-box;
 }
 
+#rainbow_toggle {
+  font-size: 2rem;
+  background: black;
+  color: white;
+}
+
 #colorDropdown {
   font-size: 2rem;
   background-color: black;

@@ -1,6 +1,8 @@
 const gridButton = document.querySelector("#grid_size_confirm");
 const container = document.querySelector(".container");
 let brushColor = "black";
+document.querySelector("#colorDropdown").style.backgroundColor = brushColor;
+let hover = true;
 
 
 function setGrid(number) {
@@ -24,12 +26,10 @@ function setGrid(number) {
   }
 }
 
-let hover = true; // Initial state of the hover variable
-
 // Brush color
 
 const brushSelector = document.querySelector("#colorDropdown");
-brushSelector.addEventListener("change", function(event) {
+brushSelector.addEventListener("change", function (event) {
   setBrushColor(event.target.value);
 });
 
@@ -41,13 +41,13 @@ function setBrushColor(color) {
 // Function to update styles and event listeners based on the hover state
 function updateUI() {
   const colorModeButton = document.querySelector("#rainbow_toggle").value;
-  // if (colorModeButton === "Default") {
-  //   brushColor = document.querySelector("#colorDropdown").style.backgroundColor;
-  // } else if (colorModeButton === "Rainbow") {
-  //   brushColor = rainbowBrush();
-  // } else {
-  //   brushColor = progressiveBrush();
-  // }
+  if (colorModeButton === "Default") {
+    brushColor = document.querySelector("#colorDropdown").style.backgroundColor;
+  } else if (colorModeButton === "Rainbow") {
+    brushColor = rainbowBrush();
+  } else {
+    brushColor = progressiveBrush();
+  }
   if (hover) {
     document.querySelector("#hover_span").style.fontWeight = "bold";
     document.querySelector("#active_span").style.fontWeight = "normal";
@@ -110,35 +110,33 @@ function setActive(event) {
 }
 
 function setClick(event) {
-  const tile = event.target.style
+  const tile = event.target.style;
   tile.backgroundColor = brushColor;
 }
 
-// Color mode
+// Color mode listener
 
 const colorModeButton = document.querySelector("#rainbow_toggle");
 colorModeButton.addEventListener("click", changeColorMode);
-
-// TODO: puth brushColor and conditional in updateUI()
-if (hover) {
-  brushColor = "red";
-} else {
-  brushColor = "blue";
-}
 
 function changeColorMode() {
   const colorModeButton = document.querySelector("#rainbow_toggle").value;
   if (colorModeButton === "Default") {
     document.querySelector("#rainbow_toggle").value = "Rainbow";
-    updateUI(); 
+    document.querySelector("#rainbow_toggle").textContent = "Rainbow";
+    document.querySelector("#rainbow_toggle").style = "background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet); color: black;"
+    updateUI();
   } else if (colorModeButton === "Rainbow") {
     document.querySelector("#rainbow_toggle").value = "Progressive";
+    document.querySelector("#rainbow_toggle").textContent = "Progressive";
+    document.querySelector("#rainbow_toggle").style = "background: linear-gradient(to right, white, black); color: red;";
     updateUI();
   } else {
     document.querySelector("#rainbow_toggle").value = "Default";
+    document.querySelector("#rainbow_toggle").textContent = "Default";
+    document.querySelector("#rainbow_toggle").style = "background: black; color: white;";
     updateUI();
   }
-  
 }
 
 gridButton.addEventListener("click", function () {
@@ -147,7 +145,7 @@ gridButton.addEventListener("click", function () {
 gridButton.addEventListener("keyup", function (event) {
   if (event.key === "Enter") {
     setGrid(parseInt(document.querySelector("#grid_size").value));
-  }
+  } 
 });
 document
   .querySelector("#grid_size")
@@ -157,14 +155,12 @@ document
     }
   });
 
-
-  // TODO: leave undo button for the very last
-  // to learn about stack history and so on 
+// TODO: leave undo button for the very last
+// to learn about stack history and so on
 
 // const undo = document.querySelector("#undo");
 
 // undo.addEventListener("click", undoLastAction);
-
 
 // // TODO: add title and property instead of passing titleBG paramenter, as it changes to "", not tile.style.BG
 // function recordChange(tileBG, value) {
@@ -186,4 +182,3 @@ const eraser = document.querySelector("#eraser");
 const reset = document.querySelector("#reset");
 
 // reset.addEventListener("click", resetGrid);
-
