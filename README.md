@@ -9,5 +9,6 @@ Known issues:
 - After setting the eraser, color change is necessary to begin painting again
 - To start painting in Progressive mode, color has to be selected after entering the mode
 - Eraser not working in Rainbow mode
+- In Active mode, releasing left-click causes problems if released while moving the mouse
 
 Feel free to play at: https://tostimontes.github.io/etch-a-sketch/
