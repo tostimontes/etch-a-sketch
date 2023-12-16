@@ -73,6 +73,9 @@ input[type="checkbox"]:checked + label::after {
   transform: translateX(26px);
 }
 
+#hover_span {
+  font-weight: bold;
+}
 .container {
   display: flex;
   flex-wrap: wrap;
