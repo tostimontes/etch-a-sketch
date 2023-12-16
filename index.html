@@ -11,33 +11,36 @@
     <h1>Etch-a-sketch</h1>
     <div class="controls_box">
       <div class="control_buttons" id="size_selector">
-        Grid Size <input id="grid_size" type="text" placeholder="Enter number between 10 and 100"/><button
-          id="grid_size_confirm"
-        >
-          OK
-        </button>
+        Grid Size
+        <input
+          id="grid_size"
+          type="text"
+          placeholder="Enter number between 10 and 100"
+        /><button id="grid_size_confirm">OK</button>
       </div>
       <div class="control_buttons" id="hover_active_toggle">
-        <span id="hover_span">Hover</span><input
-          class="toggle_btn"
-          type="checkbox"
-          id="toggle_mouse_mode"
-        />
-        <label for="toggle_mouse_mode" id="hover_active_label"></label> <span id="active_span">Active</span>
+        <span id="hover_span">Hover</span
+        ><input class="toggle_btn" type="checkbox" id="toggle_mouse_mode" />
+        <label for="toggle_mouse_mode" id="hover_active_label"></label>
+        <span id="active_span">Active</span>
       </div>
-      <div class="control_buttons" id="rainbow_progressive_darkening_toggle">Color mode
+      <div class="control_buttons" id="rainbow_progressive_darkening_toggle">
+        <p>Color mode</p>
         <button id="rainbow_toggle" value="Default">Default</button>
-      </div>Color
-      <select id="colorDropdown" style="background-color: black;">
-        <option value="black" style="background-color: black;"></option>
-        <option value="red" style="background-color: red;"></option>
-        <option value="orange" style="background-color: orange;"></option>
-        <option value="yellow" style="background-color: yellow;"></option>
-        <option value="green" style="background-color: green;"></option>
-        <option value="blue" style="background-color: blue;"></option>
-        <option value="indigo" style="background-color: indigo;"></option>
-        <option value="violet" style="background-color: violet;"></option>
-      </select>
+      </div>
+      <div class="color_selection">
+        <p>Color</p>
+        <select id="colorDropdown" style="background-color: black">
+          <option value="black" style="background-color: black"></option>
+          <option value="red" style="background-color: red"></option>
+          <option value="orange" style="background-color: orange"></option>
+          <option value="yellow" style="background-color: yellow"></option>
+          <option value="green" style="background-color: green"></option>
+          <option value="blue" style="background-color: blue"></option>
+          <option value="indigo" style="background-color: indigo"></option>
+          <option value="violet" style="background-color: violet"></option>
+        </select>
+      </div>
     </div>
     <div class="container"></div>
     <div id="erasers">
