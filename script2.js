@@ -20,13 +20,11 @@ let rainbowIndex = 0;
 let currentColor =
   document.querySelector("#colorDropdown").style.backgroundColor;
 
-// TODO: add restrictions to input
 function setGridSize(inputNumber) {
-
-if (!Number.isInteger(inputNumber) || inputNumber < 10 || inputNumber > 100) {
+  if (!Number.isInteger(inputNumber) || inputNumber < 10 || inputNumber > 100) {
     alert("Please enter a whole integer between 10 and 100.");
     return;
-}
+  }
   const container = document.querySelector(".container");
   container.innerHTML = "";
   for (let index = 0; index < inputNumber; index++) {
@@ -61,8 +59,6 @@ function choosePaintMode(event) {
   }
 }
 
-// So paintTile should be the color selection function, so that first
-// the code evaluates and then the paintTile function evaluates which color to use
 function getColorForTile(tile) {
   switch (colorModeButton.value) {
     case "Rainbow":
@@ -71,11 +67,9 @@ function getColorForTile(tile) {
       return color;
 
     case "Progressive":
-      // 1. retrieve tile's opacity
-      // 2. retrieve current color and translate
       return addOpacityToColor(tile, currentColor, 0.1);
 
-    default: // Default mode
+    default:
       return currentColor;
   }
 }
@@ -93,14 +87,15 @@ function addOpacityToColor(tile, currentColor, opacityIncrement) {
       violet: "rgba(238, 130, 238, 1)",
       black: "rgba(0, 0, 0, 1)",
       white: "rgba(255, 255, 255, 1)",
-      // Add more colors as needed
     };
 
     currentColor = colorMap[colorName.toLowerCase()] || colorName;
     rgbaStringToArray(currentColor);
     function rgbaStringToArray(rgbaString) {
-      // Remove 'rgba(' at the start and ')' at the end, then split by ', '
-      currentColor = rgbaString.replace("rgba(", "").replace(")", "").split(", ");
+      currentColor = rgbaString
+        .replace("rgba(", "")
+        .replace(")", "")
+        .split(", ");
       return currentColor;
     }
   }
@@ -113,9 +108,6 @@ function addOpacityToColor(tile, currentColor, opacityIncrement) {
   if (tile.style.backgroundColor == "rgb(255, 255, 255)") {
     newOpacity = 0.1;
   }
-  console.log(
-    `rgba(${currentColor[0]}, ${currentColor[1]}, ${currentColor[2]}, ${newOpacity})`
-  );
   return `rgba(${currentColor[0]}, ${currentColor[1]}, ${currentColor[2]}, ${newOpacity})`;
 }
 
@@ -152,7 +144,6 @@ function setEraser() {
 }
 
 function resetGridBackground() {
-  // set all tiles bgcolor to white
   const tiles = document.querySelectorAll(".tile");
   tiles.forEach((tile) => {
     tile.style.backgroundColor = "rgba(255, 255, 255, 1.0)";
