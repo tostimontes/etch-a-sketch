@@ -7,3 +7,5 @@ To improve:
 
 Known issues:
 - After setting the eraser, color change is necessary to begin painting again
+
+Feel free to play at: https://tostimontes.github.io/etch-a-sketch/
